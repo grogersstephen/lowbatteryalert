@@ -60,7 +60,7 @@ func (b *battery) getStatus() error {
 func (b *battery) updateLevel() int {
 	// Will return:
 	//     +1 if we ascended a level
-	//     -1 if we ascended a level
+	//     -1 if we descended a level
 	//     0 if the level is unchanged
 	if b.levelDown() {
 		return -1
