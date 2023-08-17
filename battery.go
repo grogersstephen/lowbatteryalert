@@ -81,28 +81,17 @@ func (b *battery) updateLevel(charge int) int {
 	return 0
 }
 
-<<<<<<< HEAD
 func (b *battery) levelUp(charge int) bool {
 	if charge >= THRESHOLD[CRITICAL] && b.Level < VERY_LOW {
 		b.Level = VERY_LOW
-=======
-func (b *battery) levelUp() bool {
-	if b.Charge >= THRESHOLD[LOW] && b.Level < SAFE {
-		b.Level = SAFE
->>>>>>> 60f01bf (reversed the conditional statements in levelUp())
 		return true
 	}
 	if charge >= THRESHOLD[VERY_LOW] && b.Level < LOW {
 		b.Level = LOW
 		return true
 	}
-<<<<<<< HEAD
 	if charge >= THRESHOLD[LOW] && b.Level < SAFE {
 		b.Level = SAFE
-=======
-	if b.Charge >= THRESHOLD[CRITICAL] && b.Level < VERY_LOW {
-		b.Level = VERY_LOW
->>>>>>> 60f01bf (reversed the conditional statements in levelUp())
 		return true
 	}
 	return false
