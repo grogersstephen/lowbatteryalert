@@ -70,7 +70,7 @@ func (b *battery) isCharging() (bool, error) {
 func (b *battery) updateLevel(charge int) int {
 	// Will return:
 	//     +1 if we ascended a level
-	//     -1 if we ascended a level
+	//     -1 if we descended a level
 	//     0 if the level is unchanged
 	if b.levelDown(charge) {
 		return -1
