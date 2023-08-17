@@ -20,19 +20,19 @@ func (b *battery) getValues() error {
 	// This method will call other methods to get the status and capacity values for the battery
 	errmsg := "Cannot get Battery Info from file: "
 
-	err := b.getStatus()
+	err := b.setCharging()
 	if err != nil {
 		return fmt.Errorf(errmsg + err.Error())
 	}
 
-	err = b.getCharge()
+	err = b.setCharge()
 	if err != nil {
 		return fmt.Errorf(errmsg + err.Error())
 	}
 	return nil
 }
 
-func (b *battery) getCharge() error {
+func (b *battery) setCharge() error {
 	// This will get the contents of the capacity file, strip the white space, convert to int
 	//    And assign the value to b.Charge
 	dat, err := os.ReadFile(PATH + "capacity")
@@ -43,8 +43,8 @@ func (b *battery) getCharge() error {
 	return err
 }
 
-func (b *battery) getStatus() error {
-	// This will get the contents of the status file, strip the white space, and assign the value to b.Status
+func (b *battery) setCharging() error {
+	// This will get the contents of the status file and use it to determine if the device is currently charging
 	dat, err := os.ReadFile(PATH + "status")
 	if err != nil {
 		return err
