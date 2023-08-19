@@ -34,7 +34,11 @@ func main() {
 
 	interval, err := time.ParseDuration(*intervalString)
 	if err != nil {
-		log.Fatalf("parse interval: %w", err)
+		// FIXES: log.Fatalf() does not accept the %w error wrapping directive
+		//     as it calls fmt.Sprintf() which does not accept it.
+		//     Used fmt.Errorf() to wrap the error, then log.Fatal() to log it
+		err = fmt.Errorf("parse interval: %w", err)
+		log.Fatal(err)
 	}
 	// Declare our battery struct
 	b := battery{
