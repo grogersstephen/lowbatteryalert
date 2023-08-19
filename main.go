@@ -49,7 +49,7 @@ func main() {
 	for {
 
 		// Get battery status from file
-		isCharing, charge, err := b.getValues()
+		isCharging, charge, err := b.getValues()
 		if err != nil {
 			n := notification{
 				"-t":   "ERROR",
@@ -63,7 +63,7 @@ func main() {
 		}
 
 		// updateLevel checks to see if the battery level drops below or rises above a defined threshold
-		if b.updateLevel(charge) == -1 && !isCharing { // Battery level dropped below a threshold
+		if b.updateLevel(charge) == -1 && !isCharging { // Battery level dropped below a threshold
 			n := notification{
 				"-t":    "LOW BATTERY",
 				"-c":    fmt.Sprintf("Your battery is currently at %d%%. Please provide power.", charge),
