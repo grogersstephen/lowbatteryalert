@@ -15,7 +15,7 @@ type battery struct {
 	// Level will tell us how low the battery is compared to the constants declared above:
 	//     SAFE, LOW, VERY_LOW, and CRITICAL
 	// FIXES: now that you have it as a type alias it is easier to jump to the definition of the enums
-	Level threshold
+	Level level
 }
 
 func (b *battery) getValues() (bool, int, error) {

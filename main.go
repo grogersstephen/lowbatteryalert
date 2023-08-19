@@ -13,16 +13,16 @@ const (
 )
 
 // I would make a type alias of these. It can be easier to find and seperate concerns
-type threshold = int
+type level = int
 
 const (
-	CRITICAL threshold = iota // Levels for the battery
+	CRITICAL level = iota // Levels for the battery
 	VERY_LOW
 	LOW
 	SAFE
 )
 
-var THRESHOLD = map[threshold]int{ // Battery Percentage thresholds that define the levels
+var THRESHOLD = map[level]int{ // Battery Percentage thresholds that define the levels
 	CRITICAL: 5,
 	VERY_LOW: 10,
 	LOW:      20,
